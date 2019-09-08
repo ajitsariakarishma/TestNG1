@@ -164,6 +164,7 @@ public class Registration {
         price = price.substring(0, 6);
         price = price.replaceAll("[^0-9]", "");
         int x = Integer.parseInt(price);
+        //checking the filter function
         if (x >= 700 && x <= 3000) {
             ans = "PASSED";
             System.out.println("Your test has " + ans);
@@ -171,7 +172,13 @@ public class Registration {
 
             ans = "FAILED";
             System.out.println("Your test has " + ans);
+
         }
+        //checking user is navigated to jewllery page
+        String pageTitle=driver.findElement(By.xpath("//h1[contains(text(),'Jewelry')]")).getText();
+        String actual_title="Jewelry";
+        System.out.println("you are navigated to :"+actual_title+" page." );
+        Assert.assertEquals(pageTitle,actual_title);
     }
         @Test
         public void userShouldBeAbleToAddTheProductsToTheShoppingCart() throws InterruptedException {
